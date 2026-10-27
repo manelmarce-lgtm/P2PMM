@@ -1,10 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_practica2/models/persona.dart';
+import 'package:flutter_application_practica2/models/Persona.dart';
 import 'package:flutter_application_practica2/screens/personal_screen.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
+@override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  late Persona persona;
+  @override
+  void initState() {
+    super.initState();
+    persona = Persona.defaults();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,12 +26,16 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: _profileCard(context),
+        child: Column(
+          children:[
+          const SizedBox(height: 16),
+          _profileCard(),
+          ]
+        )
       ),
     );
   }
-  Widget _profileCard(BuildContext context) {
-    persona p1 = persona.defaults();
+  Widget _profileCard() {
 
     return Card(
       elevation: 10.0,
@@ -30,28 +45,35 @@ class HomeScreen extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              p1.nom,
+              "${persona.nom}",
               style: const TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
             ),
             Text(
-              p1.cognoms,
+              "${persona.cognoms}",
               style: const TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold),
             ),
             Text(
-              p1.email,
+              "${persona.email}",
               style: const TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold),
             ),
             Text(
-              p1.getEdatFormatejada,
+              persona.getEdatFormatejada,
               style: const TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold),
             ),
-            const SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
+              ElevatedButton(
+              onPressed: () async {
+                final Persona? personaEditada = await Navigator.push<Persona>(
                   context,
-                  MaterialPageRoute(builder: (context) => const PersonalScreen()),
+                  MaterialPageRoute(
+                   builder: (context) => PersonalScreen(persona: persona),
+                  ),
                 );
+                // Si ens tornen una persona actualitzada, re-renderitzem la pantalla
+                if (personaEditada != null) {
+                  setState(() {
+                    persona = personaEditada;
+                  });
+                }
               },
               child: const Text('Edita el teu perfil'),
             ),
