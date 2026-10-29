@@ -160,14 +160,14 @@ class _PersonalScreenState extends State<PersonalScreen> {
                   if (_formKey.currentState!.validate()) {
                     _formKey.currentState!.save();
 
-                    final personaGuardada = Persona(
+                    final personaEditada = Persona(
                       nom: _nom,
                       cognoms: _cognoms,
                       email: _email,
                       edat: _edat!,
                     );
 
-                    Navigator.pop(context, personaGuardada);
+                    Navigator.pop(context, personaEditada);
                   }
                 },
                 child: const Text('Guardar'),
