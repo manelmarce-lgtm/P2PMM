@@ -97,13 +97,14 @@ class _PersonalScreenState extends State<PersonalScreen> {
               ),
               const SizedBox(height: 12),
 
-              // 3. Email Address (Teclat configurat per a email)
+              // 3. Email Address 
               TextFormField(
                 initialValue: _email,
-                keyboardType: TextInputType.emailAddress,
                 decoration: const InputDecoration(
                   labelText: 'Email',
-                  hintText: 'Introdueix el teu email',
+                  hintText: 'Introdueix només el nom',
+                  suffixText: '@gmail.com', 
+                  suffixStyle: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),
                 ),
                 validator: (value) {
                   if (value == null || value.trim().isEmpty) {
@@ -111,7 +112,7 @@ class _PersonalScreenState extends State<PersonalScreen> {
                   }
                   return null;
                 },
-                onSaved: (value) => _email = value!.trim(),
+                onSaved: (value) => _email = '${value!.trim()}@gmail.com',
               ),
               const SizedBox(height: 12),
 

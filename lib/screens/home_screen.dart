@@ -26,9 +26,12 @@ class _HomeScreenState extends State<HomeScreen> {
         centerTitle: true,
         backgroundColor: Colors.blue,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(children: [const SizedBox(height: 16), _profileCard()]),
+      body: Center(
+
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(children: [const SizedBox(height: 16), _profileCard()]),
+        )
       ),
     );
   }
