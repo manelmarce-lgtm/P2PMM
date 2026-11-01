@@ -6,12 +6,7 @@ class Persona {
   DateTime fechaOriginal = DateTime.now();
 
   // Constructor principal
-  Persona({
-    this.nom,
-    this.cognoms,
-    this.email,
-    this.edat,
-  });
+  Persona({this.nom, this.cognoms, this.email, this.edat});
 
   // Constructor de fábrica con valores por defecto
   factory Persona.defaults() {

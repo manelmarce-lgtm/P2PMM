@@ -102,9 +102,7 @@ class _PersonalScreenState extends State<PersonalScreen> {
                 initialValue: _email,
                 decoration: const InputDecoration(
                   labelText: 'Email',
-                  hintText: 'Introdueix només el nom',
-                  suffixText: '@gmail.com', 
-                  suffixStyle: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),
+                  hintText: 'Introdueix el email',
                 ),
                 validator: (value) {
                   if (value == null || value.trim().isEmpty) {
@@ -112,7 +110,7 @@ class _PersonalScreenState extends State<PersonalScreen> {
                   }
                   return null;
                 },
-                onSaved: (value) => _email = '${value!.trim()}@gmail.com',
+                onSaved: (value) => _email = value!.trim(),
               ),
               const SizedBox(height: 12),
 
