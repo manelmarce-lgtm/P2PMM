@@ -98,6 +98,7 @@ class _PersonalScreenState extends State<PersonalScreen> {
               // 3. Email Address
               TextFormField(
                 initialValue: _email,
+                keyboardType: TextInputType.emailAddress,
                 decoration: const InputDecoration(
                   labelText: 'Email',
                   hintText: 'Introdueix el email',
