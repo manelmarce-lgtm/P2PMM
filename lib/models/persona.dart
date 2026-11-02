@@ -3,7 +3,6 @@ class Persona {
   String? cognoms;
   String? email;
   DateTime? edat;
-  DateTime fechaOriginal = DateTime.now();
 
   // Constructor principal
   Persona({this.nom, this.cognoms, this.email, this.edat});
