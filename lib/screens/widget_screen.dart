@@ -32,7 +32,7 @@ class _WidgetScreenState extends State<WidgetScreen> {
                 final item = itemsGuardats[index];
 
                 return Dismissible(
-                  key: Key(item), // Clave única por elemento
+                  key: Key(item), // Clau única per element
                   background: Container(
                     color: Colors.green,
                     child: const Icon(Icons.check),
@@ -119,38 +119,37 @@ class _WidgetScreenState extends State<WidgetScreen> {
             ),
           ),
           const Divider(thickness: 3),
-const SizedBox(height: 5),
-const Text("Llista ordenable"),
-Expanded(
-  child: ReorderableListView(
-    buildDefaultDragHandles: false,
-    header: const Text("Capçalera de la llista"),
-    onReorder: (oldIndex, newIndex) {
-      setState(() {
-        if (oldIndex < newIndex) {
-          newIndex -= 1;
-        }
-        final item = itemsGuardats.removeAt(oldIndex);
-        itemsGuardats.insert(newIndex, item);
-      });
-    },
-    children: [
-
-      for (int i = 0; i < itemsGuardats.length; i++)
-        ListTile(
-          key: ValueKey(itemsGuardats[i]),
-          title: Text("Item: ${itemsGuardats[i]}"),
-          trailing: ReorderableDragStartListener(
-            index: i,
-            child: const Icon(
-              Icons.open_with,
-              color: Color.fromARGB(255, 4, 146, 134),
+          const SizedBox(height: 5),
+          const Text("Llista ordenable"),
+          Expanded(
+            child: ReorderableListView(
+              buildDefaultDragHandles: false,
+              header: const Text("Capçalera de la llista"),
+              onReorder: (oldIndex, newIndex) {
+                setState(() {
+                  if (oldIndex < newIndex) {
+                    newIndex -= 1;
+                  }
+                  final item = itemsGuardats.removeAt(oldIndex);
+                  itemsGuardats.insert(newIndex, item);
+                });
+              },
+              children: [
+                for (int i = 0; i < itemsGuardats.length; i++)
+                  ListTile(
+                    key: ValueKey(itemsGuardats[i]),
+                    title: Text("Item: ${itemsGuardats[i]}"),
+                    trailing: ReorderableDragStartListener(
+                      index: i,
+                      child: const Icon(
+                        Icons.open_with,
+                        color: Color.fromARGB(255, 4, 146, 134),
+                      ),
+                    ),
+                  ),
+              ],
             ),
           ),
-        ),
-    ],
-  ),
-),
         ],
       ),
     );

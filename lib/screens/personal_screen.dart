@@ -53,9 +53,7 @@ class _PersonalScreenState extends State<PersonalScreen> {
   Widget build(BuildContext context) {
     // Requisit AppBar: Títol amb el primer cognom de l'estudiant
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Editar Perfil'),
-      ),
+      appBar: AppBar(title: const Text('Editar Perfil')),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Form(
@@ -97,7 +95,7 @@ class _PersonalScreenState extends State<PersonalScreen> {
               ),
               const SizedBox(height: 12),
 
-              // 3. Email Address 
+              // 3. Email Address
               TextFormField(
                 initialValue: _email,
                 decoration: const InputDecoration(

@@ -8,7 +8,7 @@ class Persona {
   // Constructor principal
   Persona({this.nom, this.cognoms, this.email, this.edat});
 
-  // Constructor de fábrica con valores por defecto
+  // Constructor de fábrica amb valores per defecte
   factory Persona.defaults() {
     final ara = DateTime.now();
     return Persona(
@@ -19,7 +19,7 @@ class Persona {
     );
   }
 
-  // Getters y Setters permitiendo nulos
+  // Getters y Setters
   String? get getNom => nom;
   set setNom(String? nom) => this.nom = nom;
 
@@ -32,7 +32,7 @@ class Persona {
   DateTime? get getEdat => edat;
   set setEdat(DateTime? edat) => this.edat = edat;
 
-  // Formato de fecha seguro ante valores nulos
+  // Format de data segur per valors nuls
   String get getEdatFormatejada =>
       edat != null ? '${edat!.day}/${edat!.month}/${edat!.year}' : '';
 
